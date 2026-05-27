@@ -1,148 +1,239 @@
 "use strict";
 
-// Tableau de données — à générer avec Copilot / une IA
-const data = [
+// Tableau de données — consommables RPG Maker
+let data = [
   {
-    id: 35,
-    name: "The Witcher 3",
-    category: "RPG",
-    platform: "PC",
-    rating: 9.5,
-    year: 2015,
-    image: "https://placehold.co/400x300/4a90d9/white?text=The+Witcher+3"
+    id: 1,
+    name: "Soupe de Champignons",
+    category: "Soin",
+    effect: "Restaure 80 HP",
+    price: 50,
+    tags: ["hp"],
+    image: "https://placehold.co/400x300/27ae60/white?text=Soupe+de+Champignons"
   },
   {
-    id: 36,
-    name: "Call of Duty Black Ops",
-    category: "FPS",
-    platform: "Xbox 360",
-    rating: 8.7,
-    year: 2010,
-    image: "https://placehold.co/400x300/e74c3c/white?text=Call+of+Duty+Black+Ops"
+    id: 2,
+    name: "Tarte Épicée",
+    category: "Attaque",
+    effect: "Brûlure infligée + ATK +15 (3t)",
+    price: 120,
+    tags: ["feu", "force"],
+    image: "https://placehold.co/400x300/e74c3c/white?text=Tarte+Épicée"
   },
   {
-    id: 37,
-    name: "The Legend of Zelda Breath of the Wild",
-    category: "Aventure",
-    platform: "Nintendo Switch",
-    rating: 9.2,
-    year: 2017,
-    image: "https://placehold.co/400x300/27ae60/white?text=Zelda+Breath+of+the+Wild"
+    id: 3,
+    name: "Gelée de Givre",
+    category: "Soin",
+    effect: "Annule Gel + restaure 30 HP",
+    price: 100,
+    tags: ["glace", "hp"],
+    image: "https://placehold.co/400x300/4a90d9/white?text=Gelée+de+Givre"
   },
   {
-    id: 38,
-    name: "Starcraft II",
-    category: "Stratégie",
-    platform: "PC",
-    rating: 8.5,
-    year: 2010,
-    image: "https://placehold.co/400x300/f39c12/white?text=Starcraft+II"
+    id: 4,
+    name: "Thé Venteux",
+    category: "Buff",
+    effect: "AGI +20 pendant 4 tours",
+    price: 150,
+    tags: ["vitesse"],
+    image: "https://placehold.co/400x300/f39c12/white?text=Thé+Venteux"
   },
   {
-    id: 39,
-    name: "Elden Ring",
-    category: "RPG",
-    platform: "PS5",
-    rating: 9.0,
-    year: 2022,
-    image: "https://placehold.co/400x300/4a90d9/white?text=Elden+Ring"
+    id: 5,
+    name: "Rôti de Sanglier Royal",
+    category: "Soin",
+    effect: "Restaure 200 HP + ATK +10 (5t)",
+    price: 200,
+    tags: ["hp", "force"],
+    image: "https://placehold.co/400x300/e67e22/white?text=Rôti+Royal"
   },
   {
-    id: 40,
-    name: "Counter Strike 2",
-    category: "FPS",
-    platform: "PC",
-    rating: 8.9,
-    year: 2023,
-    image: "https://placehold.co/400x300/e74c3c/white?text=Counter+Strike+2"
+    id: 6,
+    name: "Bouillon d'Arcane",
+    category: "Soin",
+    effect: "Restaure 60 MP",
+    price: 90,
+    tags: ["mp"],
+    image: "https://placehold.co/400x300/8e44ad/white?text=Bouillon+Arcane"
   },
   {
-    id: 41,
-    name: "Uncharted 4",
-    category: "Aventure",
-    platform: "PS4",
-    rating: 8.8,
-    year: 2016,
-    image: "https://placehold.co/400x300/27ae60/white?text=Uncharted+4"
+    id: 7,
+    name: "Miel de Fer",
+    category: "Buff",
+    effect: "DEF +12 pendant 4 tours",
+    price: 180,
+    tags: ["défense"],
+    image: "https://placehold.co/400x300/f39c12/white?text=Miel+de+Fer"
   },
   {
-    id: 42,
-    name: "Civilization VI",
-    category: "Stratégie",
-    platform: "PC",
-    rating: 8.4,
-    year: 2016,
-    image: "https://placehold.co/400x300/f39c12/white?text=Civilization+VI"
+    id: 8,
+    name: "Sorbet Arctique",
+    category: "Attaque",
+    effect: "Inflige Gel + résistance feu (2t)",
+    price: 80,
+    tags: ["glace", "feu"],
+    image: "https://placehold.co/400x300/4a90d9/white?text=Sorbet+Arctique"
   },
   {
-    id: 43,
-    name: "Dark Souls III",
-    category: "RPG",
-    platform: "PS4",
-    rating: 8.6,
-    year: 2016,
-    image: "https://placehold.co/400x300/4a90d9/white?text=Dark+Souls+III"
+    id: 9,
+    name: "Festin du Voyageur",
+    category: "Soin",
+    effect: "Restaure 150 HP + 80 MP + annule états",
+    price: 350,
+    tags: ["hp", "mp", "glace", "feu"],
+    image: "https://placehold.co/400x300/27ae60/white?text=Festin+Voyageur"
   },
   {
-    id: 44,
-    name: "Valorant",
-    category: "FPS",
-    platform: "PC",
-    rating: 8.3,
-    year: 2020,
-    image: "https://placehold.co/400x300/e74c3c/white?text=Valorant"
+    id: 10,
+    name: "Consommé de Dragon",
+    category: "Légendaire",
+    effect: "PV + PM complets, ATK +30, AGI +20 (5t)",
+    price: 500,
+    tags: ["hp", "mp", "force", "vitesse"],
+    image: "https://placehold.co/400x300/c0392b/white?text=Consommé+de+Dragon"
   }
 ];
 
-// Bouton de tri
-let btnSort = document.getElementById("btn-sort");
+// Éléments du DOM
+const btnSort = document.getElementById("btn-sort");
+const searchInput = document.getElementById("search");
+const form = document.getElementById("form-add");
+const inputName = document.getElementById("input-name");
+const inputCategory = document.getElementById("input-category");
+const inputEffect = document.getElementById("input-effect");
+const inputPrice = document.getElementById("input-price");
+
 // Sens du tri
-let sortAsc = false; // Tri DESC par défaut
-
-// console.log(btnSort);
-btnSort.addEventListener("click", function (event) {
-
-  // Tri UNE COPIE du tableau par notes DESC
-  let sortedTab = [...data].sort(function (a, b) {
-    return sortAsc ? a.rating - b.rating : b.rating - a.rating;
-  });
-  // Inverse le tri
-  sortAsc = !sortAsc;
-
-  // Modifier le texte du bouton
-  btnSort.textContent = sortAsc ? "Trier par note ↑ (ASC)" : "Trier par note ↓ (DESC)";
-  // Affiche le tableau avec le nouveau tri
-  afficherJeux(sortedTab);
-});
-
+let sortAsc = false;
 
 /**
- * Affiche les jeux dans la page
- * @param {Array} tabJeux - Tableau d'objets jeu à afficher
+ * Rafraîchit l'affichage :
+ * filtre + tri
  */
-function afficherJeux(tabJeux) {
-  // Récupère la liste #list
+function refresh() {
+  // Vérifier si la recherche existe (pour compatibilité avec les deux versions)
+  const query = searchInput ? searchInput.value.toLowerCase() : "";
+
+  // 1. Filtrer (si recherche existe)
+  let result = data;
+  if (searchInput && query) {
+    result = data.filter(item => item.name.toLowerCase().includes(query));
+  } else if (searchInput) {
+    result = [...data];
+  } else {
+    result = [...data];
+  }
+
+  // 2. Trier
+  result.sort((a, b) => sortAsc ? a.price - b.price : b.price - a.price);
+
+  // 3. Afficher
+  afficherConsommables(result);
+}
+
+// =========================
+// TRI
+// =========================
+if (btnSort) {
+  btnSort.addEventListener("click", function () {
+    sortAsc = !sortAsc;
+    btnSort.textContent = sortAsc
+        ? "Trier par prix ↑ (ASC)"
+        : "Trier par prix ↓ (DESC)";
+    refresh();
+  });
+}
+
+// =========================
+// RECHERCHE
+// =========================
+if (searchInput) {
+  searchInput.addEventListener("input", refresh);
+}
+
+// =========================
+// AJOUT D'UNE RECETTE
+// =========================
+if (form) {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nouveauItem = {
+      id: Date.now(),
+      name: inputName.value.trim(),
+      category: inputCategory.value,
+      effect: inputEffect.value.trim(),
+      price: Number(inputPrice.value),
+      tags: [],
+      image: "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(inputName.value.trim())
+    };
+
+    data.push(nouveauItem);
+    refresh();
+    form.reset();
+  });
+}
+
+// =========================
+// SUPPRESSION
+// =========================
+const listElement = document.getElementById("list");
+if (listElement) {
+  listElement.addEventListener("click", function (event) {
+    const btn = event.target.closest(".btn-delete");
+    if (!btn) return;
+
+    const card = btn.closest(".card");
+    if (!card) return;
+
+    const id = Number(card.dataset.id);
+    if (!confirm("Supprimer cette recette ?")) return;
+
+    data = data.filter(item => item.id !== id);
+    refresh();
+  });
+}
+
+/**
+ * Affiche les consommables
+ * @param {Array} tabItems
+ */
+function afficherConsommables(tabItems) {
   const ulList = document.getElementById("list");
-  // Variable temporaire pour construire la liste
+  if (!ulList) return;
+
   let html = "";
 
-// Parcours le tableau et créer un li par jeu
-  tabJeux.forEach(jeu => {
+  tabItems.forEach(item => {
+    // Génère les tags
+    const tagsHtml = item.tags
+        .map(tag => `<span class="tag tag-${tag}">${tag}</span>`)
+        .join("");
+
     html += `
-    <article class="card" data-id="${jeu.id}">
-      <img src="${jeu.image}" alt="${jeu.name}">
+    <article class="card" data-id="${item.id}">
+      <img src="${item.image}" alt="${item.name}">
       <div class="card-body">
-        <h2>${jeu.name}</h2>
-        <p>${jeu.category} — ${jeu.year}</p>
-        <span class="rating">${jeu.rating}</span>
+        <h2>${item.name}</h2>
+        <p>${item.category} — ${item.effect}</p>
+        <div class="tags">
+          ${tagsHtml}
+        </div>
+        <span class="price">
+          ${item.price} Or
+        </span>
+        <button class="btn btn-danger btn-delete">
+          Supprimer
+        </button>
       </div>
     </article>
-  `;
+    `;
   });
 
-  // Ajoute la liste complète dans le DOM
   ulList.innerHTML = html;
 }
 
-// Appel au chargement de la page
-afficherJeux(data);
+// =========================
+// AFFICHAGE INITIAL
+// =========================
+refresh();
