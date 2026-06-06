@@ -1,4 +1,5 @@
 "use strict";
+
 // Tableau de données — consommables RPG Maker
 let data = [
   // ── SOIN ──────────────────────────────────────────────
@@ -342,6 +343,7 @@ let data = [
     image: "ressources/bandage.png"
   }
 ];
+
 // Éléments du DOM
 const btnSort = document.getElementById("btn-sort");
 const searchInput = document.getElementById("search");
@@ -482,4 +484,21 @@ function afficherConsommables(tabItems) {
 }
 
 
+
 refresh();
+
+// =========================
+// ONGLETS
+// =========================
+document.querySelectorAll(".nav-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".nav-btn").forEach(function(b) {
+      b.classList.remove("active");
+    });
+    document.querySelectorAll(".tab-content").forEach(function(s) {
+      s.classList.remove("active");
+    });
+    btn.classList.add("active");
+    document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+  });
+});
