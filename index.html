@@ -4,21 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consommables — RPG Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <header>
   <h1>⚗️ Boutique des Consommables</h1>
+  <p class="header-sub">Ingrédients & Recettes du Monde</p>
 </header>
 
-<main>
-  <div class="controls">
-    <button id="btn-sort">Trier par prix ↓ (DESC)</button>
-    <input type="text" id="search" placeholder="🔍 Rechercher un consommable...">
-  </div>
+<nav>
+  <button class="nav-btn active" data-tab="shop">🛒 Ingrédients</button>
+  <button class="nav-btn" data-tab="recipes">📜 Recettes</button>
+  <button class="nav-btn" data-tab="craft">⚗️ Cuisine</button>
+</nav>
 
-  <ul id="list"></ul>
+<main>
+
+  <!-- ===== ONGLET INGRÉDIENTS ===== -->
+  <section id="tab-shop" class="tab-content active">
+    <div class="controls">
+      <input type="text" id="search" placeholder="🔍 Rechercher un ingrédient...">
+      <button id="btn-sort">Trier par prix ↓ (DESC)</button>
+    </div>
+    <ul id="list"></ul>
+  </section>
+
+  <!-- ===== ONGLET RECETTES ===== -->
+  <section id="tab-recipes" class="tab-content">
+    <h2 class="section-title">📜 Livre de Recettes</h2>
+    <div id="recipes-list"></div>
+  </section>
+
+  <!-- ===== ONGLET CUISINE ===== -->
+  <section id="tab-craft" class="tab-content">
+    <h2 class="section-title">⚗️ Atelier de Cuisine</h2>
+
+    <form id="form-add">
+      <div class="form-group">
+        <label for="input-name">Nom</label>
+        <input type="text" id="input-name" placeholder="Ex : Mangue" required>
+      </div>
+      <div class="form-group">
+        <label for="input-category">Catégorie</label>
+        <select id="input-category">
+          <option value="Soin">Soin</option>
+          <option value="Buff">Buff</option>
+          <option value="Feu">Feu</option>
+          <option value="Glace">Glace</option>
+          <option value="Vitesse">Vitesse</option>
+          <option value="Eau">Eau</option>
+          <option value="Snack">Snack</option>
+          <option value="Spécial">Spécial</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="input-effect">Effet</label>
+        <input type="text" id="input-effect" placeholder="Ex : Restaure 50 HP" required>
+      </div>
+      <div class="form-group">
+        <label for="input-price">Prix (Or)</label>
+        <input type="number" id="input-price" min="1" placeholder="Ex : 80" required>
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
+
+  </section>
+
 </main>
+
+<footer>
+  <p>⚗️ Boutique des Consommables — RPG Maker</p>
+</footer>
 
 <script src="js/script.js"></script>
 </body>
