@@ -21,7 +21,7 @@
 <nav>
   <button class="nav-btn active" data-tab="shop">🛒 Ingrédients</button>
   <button class="nav-btn" data-tab="recipes">📜 Recettes</button>
-  <button class="nav-btn" data-tab="craft">⚗️ Cuisine</button>
+  <button class="nav-btn" data-tab="craft">➕ Ajouter un plat</button>
 </nav>
 
 <main>
@@ -41,17 +41,27 @@
     <div id="recipes-list"></div>
   </section>
 
-  <!-- Onglet Cuisine -->
+  <!-- Onglet Ajouter un plat -->
   <section id="tab-craft" class="tab-content">
-    <h2>⚗️ Atelier de Cuisine</h2>
-    <div id="kitchen-slots"></div>
-    <div id="kitchen-result"></div>
+    <h2>➕ Ajouter un plat</h2>
 
     <form id="form-add">
+
+      <!-- Zone glisser-déposer image -->
+      <div class="form-group">
+        <label>Image</label>
+        <div id="drop-zone" class="drop-zone">
+          <img id="preview-img" class="preview-img hidden" src="" alt="preview">
+          <span id="drop-text">🖼️ Glisse une image ici ou clique pour choisir</span>
+          <input type="file" id="input-image" accept="image/*">
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="input-name">Nom</label>
         <input type="text" id="input-name" placeholder="Ex : Mangue" required>
       </div>
+
       <div class="form-group">
         <label for="input-category">Catégorie</label>
         <select id="input-category">
@@ -65,15 +75,38 @@
           <option value="Spécial">Spécial</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="input-effect">Effet</label>
-        <input type="text" id="input-effect" placeholder="Ex : Restaure 50 HP" required>
-      </div>
+
       <div class="form-group">
         <label for="input-price">Prix (Or)</label>
         <input type="number" id="input-price" min="1" placeholder="Ex : 80" required>
       </div>
-      <button type="submit">Ajouter</button>
+
+      <div class="form-group">
+        <label for="input-hp">💚 HP</label>
+        <input type="number" id="input-hp" min="0" placeholder="0">
+      </div>
+
+      <div class="form-group">
+        <label for="input-atk">⚔️ ATK</label>
+        <input type="number" id="input-atk" min="0" placeholder="0">
+      </div>
+
+      <div class="form-group">
+        <label for="input-def">🛡️ DEF</label>
+        <input type="number" id="input-def" min="0" placeholder="0">
+      </div>
+
+      <div class="form-group">
+        <label for="input-agi">⚡ AGI</label>
+        <input type="number" id="input-agi" min="0" placeholder="0">
+      </div>
+
+      <div class="form-group">
+        <label for="input-mp">💙 MP</label>
+        <input type="number" id="input-mp" min="0" placeholder="0">
+      </div>
+
+      <button type="submit">Ajouter à la boutique</button>
     </form>
   </section>
 

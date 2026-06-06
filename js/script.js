@@ -1,6 +1,5 @@
 "use strict";
 
-// Tableau de données — consommables RPG Maker
 let data = [
   // ── SOIN ──────────────────────────────────────────────
   { id: 1,  name: "Salade",               category: "Soin",    stats: { hp: 20 },           price: 15,  image: "ressources/Salade.png" },
@@ -21,11 +20,13 @@ let data = [
   { id: 16, name: "Jiaozi",               category: "Soin",    stats: { hp: 100, def: 8 },  price: 110, image: "ressources/jiaozi.png" },
   { id: 17, name: "Guacamole",            category: "Soin",    stats: { hp: 70, def: 10 },  price: 120, image: "ressources/Guacamole.png" },
   { id: 18, name: "Jus d'Orange",         category: "Soin",    stats: { hp: 50, agi: 8 },   price: 55,  image: "ressources/JusOrange.png" },
+  { id: 39, name: "Carotte",              category: "Soin",    stats: { hp: 30, def: 5 },   price: 20,  image: "ressources/Carotte.png" },
+  { id: 40, name: "Blé",                  category: "Soin",    stats: { hp: 25 },           price: 15,  image: "ressources/Blé.png" },
   // ── GLACE ─────────────────────────────────────────────
   { id: 19, name: "Glace",                category: "Glace",   stats: { hp: 40 },           price: 45,  image: "ressources/Glace.png" },
   { id: 20, name: "Glace Pastèque",       category: "Glace",   stats: { hp: 80 },           price: 80,  image: "ressources/GlacePastèque.png" },
   // ── FEU ───────────────────────────────────────────────
-  { id: 21, name: "Piment",               category: "Feu",     stats: { atk: 20 },          price: 90,  image: "ressources/Piment.png" },
+  { id: 21, name: "Piment",               category: "Feu",     stats: { atk: 20, agi: 10 }, price: 90,  image: "ressources/Piment.png" },
   { id: 22, name: "Fruit du Dragon",      category: "Feu",     stats: { atk: 15 },          price: 100, image: "ressources/FruitDuDragon.png" },
   // ── VITESSE ───────────────────────────────────────────
   { id: 23, name: "Café",                 category: "Vitesse", stats: { agi: 20 },          price: 70,  image: "ressources/Café.png" },
@@ -41,12 +42,30 @@ let data = [
   { id: 31, name: "Burger",               category: "Buff",    stats: { hp: 180, atk: 15 }, price: 200, image: "ressources/Burgers.png" },
   { id: 32, name: "Burger Tenders",       category: "Buff",    stats: { hp: 220, atk: 20, agi: 10 }, price: 250, image: "ressources/TendersBurgers.png" },
   { id: 33, name: "Viande Cuite",         category: "Buff",    stats: { hp: 100, atk: 20 }, price: 140, image: "ressources/ViandeCuite.png" },
+  { id: 38, name: "Couscous",             category: "Buff",    stats: { hp: 200, atk: 50 }, price: 200, image: "ressources/couscous_32x32_v6.png" },
   // ── SNACK ─────────────────────────────────────────────
   { id: 34, name: "Chips",                category: "Snack",   stats: { hp: 20 },           price: 15,  image: "ressources/Chips.png" },
+  { id: 41, name: "Chips Pimentée",       category: "Snack",   stats: { hp: 20, agi: 5 },   price: 25,  image: "ressources/ChipsPimenté.png" },
   // ── SPÉCIAL ───────────────────────────────────────────
   { id: 35, name: "Potion d'Amour",       category: "Spécial", stats: { hp: 50, mp: 50 },   price: 300, image: "ressources/potion-love.png" },
   { id: 36, name: "Potion Étoile",        category: "Spécial", stats: { hp: 999, mp: 999, atk: 15, def: 15, agi: 15 }, price: 500, image: "ressources/potion-star.png" },
   { id: 37, name: "Bandage",              category: "Soin",    stats: { hp: 30 },           price: 35,  image: "ressources/bandage.png" },
+];
+
+// =========================
+// RECETTES
+// =========================
+const RECIPES = [
+  { ingredients: ["Orange", "Orange"],                                  result: "Jus d'Orange" },
+  { ingredients: ["Salade", "Tomate"],                                  result: "Salade de Tomate" },
+  { ingredients: ["Salade", "Tomate", "Pain Brioché", "Viande Cuite"], result: "Burger" },
+  { ingredients: ["Salade de Tomate", "Pain Brioché", "Viande Cuite"], result: "Burger" },
+  { ingredients: ["Salade", "Tomate", "Pain Brioché", "Tenders"],      result: "Burger Tenders" },
+  { ingredients: ["Salade de Tomate", "Pain Brioché", "Tenders"],      result: "Burger Tenders" },
+  { ingredients: ["Avocat", "Tomate"],                                  result: "Guacamole" },
+  { ingredients: ["Glace", "Pastèque"],                                 result: "Glace Pastèque" },
+  { ingredients: ["Gaufre", "Chocolat"],                                result: "Gaufre Choco" },
+  { ingredients: ["Riz", "Poisson"],                                    result: "Sushi" },
 ];
 
 // Éléments du DOM
@@ -60,6 +79,9 @@ const inputPrice    = document.getElementById("input-price");
 
 // Sens du tri
 let sortAsc = false;
+
+// Valeurs max pour les barres
+const STAT_MAX = { hp: 999, mp: 999, atk: 50, def: 20, agi: 30 };
 
 // Emoji par catégorie
 function getIcone(category) {
@@ -88,24 +110,28 @@ function getStatIcone(stat) {
   return icones[stat] || stat;
 }
 
-// Génère le HTML des stats
+// Génère les barres de stats
 function afficherStats(stats) {
-  return Object.entries(stats)
-      .map(([stat, valeur]) => `<span class="stat">${getStatIcone(stat)} ${valeur}</span>`)
-      .join("");
+  return Object.entries(stats).map(function([stat, valeur]) {
+    const max = STAT_MAX[stat] || 100;
+    const pourcent = Math.min((valeur / max) * 100, 100);
+    return `
+      <div class="stat">
+        ${getStatIcone(stat)}
+        <div class="stat-bar">
+          <div class="stat-bar-fill ${stat}" style="width: ${pourcent}%"></div>
+        </div>
+        <span>${valeur}</span>
+      </div>`;
+  }).join("");
 }
 
-// Rafraîchit l'affichage : filtre + tri
+// Rafraîchit l'affichage
 function refresh() {
   const query = searchInput ? searchInput.value.toLowerCase() : "";
-
-  let result = data;
-  if (query) {
-    result = data.filter(item => item.name.toLowerCase().includes(query));
-  } else {
-    result = [...data];
-  }
-
+  let result = query
+      ? data.filter(item => item.name.toLowerCase().includes(query))
+      : [...data];
   result.sort((a, b) => sortAsc ? a.price - b.price : b.price - a.price);
   afficherConsommables(result);
 }
@@ -136,7 +162,6 @@ if (searchInput) {
 if (form) {
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-
     const nouveauItem = {
       id: Date.now(),
       name: inputName.value.trim(),
@@ -145,7 +170,6 @@ if (form) {
       price: Number(inputPrice.value),
       image: "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(inputName.value.trim())
     };
-
     data.push(nouveauItem);
     refresh();
     form.reset();
@@ -160,39 +184,31 @@ if (listElement) {
   listElement.addEventListener("click", function (event) {
     const btn = event.target.closest(".btn-delete");
     if (!btn) return;
-
     const card = btn.closest(".card");
     if (!card) return;
-
     const id = Number(card.dataset.id);
     if (!confirm("Supprimer cet ingrédient ?")) return;
-
     data = data.filter(item => item.id !== id);
     refresh();
   });
 }
 
 // =========================
-// AFFICHAGE
+// AFFICHAGE INGRÉDIENTS
 // =========================
 function afficherConsommables(tabItems) {
   const ulList = document.getElementById("list");
   if (!ulList) return;
 
   let html = "";
-
-  tabItems.forEach(item => {
+  tabItems.forEach(function(item) {
     html += `
     <article class="card" data-id="${item.id}" data-category="${item.category}">
       <img src="${item.image}" alt="${item.name}">
       <div class="card-body">
-        <div class="card-category-badge">
-          ${getIcone(item.category)} ${item.category}
-        </div>
+        <div class="card-category-badge">${getIcone(item.category)} ${item.category}</div>
         <h2>${item.name}</h2>
-        <div class="card-stats">
-          ${afficherStats(item.stats)}
-        </div>
+        <div class="card-stats">${afficherStats(item.stats)}</div>
         <div class="card-footer">
           <span class="price">💸 ${item.price}</span>
           <button class="btn-delete" data-id="${item.id}">🗑️</button>
@@ -202,6 +218,41 @@ function afficherConsommables(tabItems) {
   });
 
   ulList.innerHTML = html;
+}
+
+// =========================
+// AFFICHAGE RECETTES
+// =========================
+function afficherRecettes() {
+  const container = document.getElementById("recipes-list");
+  if (!container) return;
+
+  let html = "";
+
+  RECIPES.forEach(function(recipe) {
+    const ingredientsHtml = recipe.ingredients.map(function(nom) {
+      const item = data.find(d => d.name === nom);
+      const img = item ? `<img src="${item.image}" alt="${nom}">` : "❓";
+      return `<div class="recipe-ing">${img}<span>${nom}</span></div>`;
+    }).join('<span class="recipe-plus">+</span>');
+
+    const resultItem = data.find(d => d.name === recipe.result);
+    const resultImg = resultItem ? `<img src="${resultItem.image}" alt="${recipe.result}">` : "❓";
+
+    html += `
+    <div class="recipe-card">
+      <div class="recipe-result">
+        ${resultImg}
+        <span>${recipe.result}</span>
+      </div>
+      <span class="recipe-arrow">⬅</span>
+      <div class="recipe-card-body">
+        ${ingredientsHtml}
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML = html;
 }
 
 // =========================
@@ -217,6 +268,8 @@ document.querySelectorAll(".nav-btn").forEach(function(btn) {
     });
     btn.classList.add("active");
     document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+
+    if (btn.dataset.tab === "recipes") afficherRecettes();
   });
 });
 

@@ -150,7 +150,7 @@ nav {
   padding: 0;
 }
 
-/* Carte — layout horizontal */
+/* Carte */
 .card {
   background-color: rgba(255, 240, 200, 0.9);
   border: 2px solid #e07b2a;
@@ -170,7 +170,6 @@ nav {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Image à gauche */
 .card img {
   width: 70px;
   height: 70px;
@@ -178,19 +177,12 @@ nav {
   flex-shrink: 0;
 }
 
-/* Contenu à droite */
 .card-body {
   flex: 1;
   padding: 0;
+  min-width: 0;
 }
 
-.card-body h2 {
-  font-size: 0.85rem;
-  color: #c45c00;
-  margin-bottom: 0.2rem;
-}
-
-/* Badge catégorie */
 .card-category-badge {
   font-size: 0.7rem;
   font-weight: bold;
@@ -198,27 +190,53 @@ nav {
   opacity: 0.8;
 }
 
-/* Stats */
+.card-body h2 {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #3d1f00;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .stat {
-  font-size: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  padding: 0.15rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
 }
 
-/* Footer carte */
+.stat-bar {
+  flex: 1;
+  height: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.stat-bar-fill.hp  { background-color: #2ecc71; }
+.stat-bar-fill.mp  { background-color: #3498db; }
+.stat-bar-fill.atk { background-color: #e74c3c; }
+.stat-bar-fill.def { background-color: #f39c12; }
+.stat-bar-fill.agi { background-color: #f1c40f; }
+
 .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 }
 
 .price {
@@ -249,3 +267,118 @@ nav {
 .card[data-category="Eau"]     { border-color: #2980b9; }
 .card[data-category="Snack"]   { border-color: #e74c3c; }
 .card[data-category="Spécial"] { border-color: #9b59b6; }
+
+/* Onglets */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ── RECETTES ─────────────────────────────── */
+
+#tab-recipes h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+#recipes-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.recipe-card {
+  background-color: rgba(255, 248, 220, 0.95);
+  border: 2px solid #e07b2a;
+  border-radius: 10px;
+  border-left: 5px solid #c45c00;
+  box-shadow: 3px 3px 0px rgba(196, 92, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  transition: transform 0.2s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 6px 0px rgba(196, 92, 0, 0.4);
+}
+
+.recipe-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: rgba(224, 123, 42, 0.15);
+  border: 2px solid #c45c00;
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.recipe-result img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.recipe-result span {
+  font-size: 0.68rem;
+  font-weight: bold;
+  color: #c45c00;
+  text-align: center;
+}
+
+.recipe-card-body {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.recipe-ing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e07b2a;
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  width: 75px;
+}
+
+.recipe-ing img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.recipe-ing span {
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: #3d1f00;
+  text-align: center;
+}
+
+.recipe-plus {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #e07b2a;
+}
+
+.recipe-arrow {
+  font-size: 1.6rem;
+  color: #c45c00;
+  font-weight: bold;
+  flex-shrink: 0;
+}
