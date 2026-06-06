@@ -3,381 +3,110 @@
 // Tableau de données — consommables RPG Maker
 let data = [
   // ── SOIN ──────────────────────────────────────────────
-  {
-    id: 1,
-    name: "Salade",
-    category: "Soin",
-    effect: "Restaure 20 HP",
-    price: 15,
-    tags: ["hp"],
-    image: "ressources/Salade.png"
-  },
-  {
-    id: 2,
-    name: "Tomate",
-    category: "Soin",
-    effect: "Restaure 25 HP",
-    price: 20,
-    tags: ["hp"],
-    image: "ressources/Tomate.png"
-  },
-  {
-    id: 3,
-    name: "Salade de Tomate",
-    category: "Soin",
-    effect: "Restaure 50 HP",
-    price: 40,
-    tags: ["hp"],
-    image: "ressources/SaladeTomate.png"
-  },
-  {
-    id: 4,
-    name: "Avocat",
-    category: "Soin",
-    effect: "Restaure 35 HP + DEF +5 (2t)",
-    price: 45,
-    tags: ["hp", "défense"],
-    image: "ressources/Avocat.png"
-  },
-  {
-    id: 5,
-    name: "Orange",
-    category: "Soin",
-    effect: "Restaure 30 HP + Annule Poison",
-    price: 25,
-    tags: ["hp"],
-    image: "ressources/Orange (1).png"
-  },
-  {
-    id: 6,
-    name: "Pastèque",
-    category: "Soin",
-    effect: "Restaure 60 HP + Annule Chaleur",
-    price: 40,
-    tags: ["hp"],
-    image: "ressources/Pastèque.png"
-  },
-  {
-    id: 7,
-    name: "Figue de Barbarie",
-    category: "Soin",
-    effect: "Restaure 45 HP + Résistance Feu",
-    price: 55,
-    tags: ["hp"],
-    image: "ressources/FigueDeBarbarie.png"
-  },
-  {
-    id: 8,
-    name: "Fruit du Passion",
-    category: "Soin",
-    effect: "Restaure 40 HP + Moral +10",
-    price: 50,
-    tags: ["hp"],
-    image: "ressources/passionfruit.png"
-  },
-  {
-    id: 9,
-    name: "Chocolat",
-    category: "Soin",
-    effect: "Restaure 40 HP + Moral +10",
-    price: 60,
-    tags: ["hp"],
-    image: "ressources/Chocolat.png"
-  },
-  {
-    id: 10,
-    name: "Gaufre",
-    category: "Soin",
-    effect: "Restaure 70 HP",
-    price: 65,
-    tags: ["hp"],
-    image: "ressources/Gauffre.png"
-  },
-  {
-    id: 11,
-    name: "Gaufre Choco",
-    category: "Soin",
-    effect: "Restaure 90 HP + Moral +15",
-    price: 90,
-    tags: ["hp"],
-    image: "ressources/GauffreChoco (1).png"
-  },
-  {
-    id: 12,
-    name: "Pain Brioché",
-    category: "Soin",
-    effect: "Restaure 30 HP + Satiété",
-    price: 25,
-    tags: ["hp"],
-    image: "ressources/PainBrioché.png"
-  },
-  {
-    id: 13,
-    name: "Riz",
-    category: "Soin",
-    effect: "Restaure 80 HP",
-    price: 50,
-    tags: ["hp"],
-    image: "ressources/Riz.png"
-  },
-  {
-    id: 14,
-    name: "Bento",
-    category: "Soin",
-    effect: "Restaure 150 HP + ATK +5 (2t)",
-    price: 130,
-    tags: ["hp", "force"],
-    image: "ressources/Bento.png"
-  },
-  {
-    id: 15,
-    name: "Nouilles Instantanées",
-    category: "Soin",
-    effect: "Restaure 60 HP",
-    price: 30,
-    tags: ["hp"],
-    image: "ressources/Nouille Instantanée.png"
-  },
-  {
-    id: 16,
-    name: "Jiaozi",
-    category: "Soin",
-    effect: "Restaure 100 HP + DEF +8 (2t)",
-    price: 110,
-    tags: ["hp", "défense"],
-    image: "ressources/jiaozi.png"
-  },
-  {
-    id: 17,
-    name: "Guacamole",
-    category: "Soin",
-    effect: "Restaure 70 HP + DEF +10 (3t)",
-    price: 120,
-    tags: ["hp", "défense"],
-    image: "ressources/Guacamole.png"
-  },
-  {
-    id: 18,
-    name: "Jus d'Orange",
-    category: "Soin",
-    effect: "Restaure 50 HP + VIT +8 (2t)",
-    price: 55,
-    tags: ["hp", "vitesse"],
-    image: "ressources/JusOrange.png"
-  },
-  {
-    id: 19,
-    name: "Glace",
-    category: "Glace",
-    effect: "Restaure 40 HP + Annule Brûlure",
-    price: 45,
-    tags: ["hp", "glace"],
-    image: "ressources/Glace.png"
-  },
-  {
-    id: 20,
-    name: "Glace Pastèque",
-    category: "Glace",
-    effect: "Restaure 80 HP + Annule Brûlure + Chaleur",
-    price: 80,
-    tags: ["hp", "glace"],
-    image: "ressources/GlacePastèque.png"
-  },
-  // ── ATTAQUE ───────────────────────────────────────────
-  {
-    id: 21,
-    name: "Piment",
-    category: "Feu",
-    effect: "ATK +20 + Inflige Brûlure (2t)",
-    price: 90,
-    tags: ["feu", "force"],
-    image: "ressources/Piment.png"
-  },
-  {
-    id: 22,
-    name: "Fruit du Dragon",
-    category: "Feu",
-    effect: "ATK +15 + Résistance Feu (3t)",
-    price: 100,
-    tags: ["feu"],
-    image: "ressources/FruitDuDragon.png"
-  },
+  { id: 1,  name: "Salade",               category: "Soin",    stats: { hp: 20 },           price: 15,  image: "ressources/Salade.png" },
+  { id: 2,  name: "Tomate",               category: "Soin",    stats: { hp: 25 },           price: 20,  image: "ressources/Tomate.png" },
+  { id: 3,  name: "Salade de Tomate",     category: "Soin",    stats: { hp: 50 },           price: 40,  image: "ressources/SaladeTomate.png" },
+  { id: 4,  name: "Avocat",               category: "Soin",    stats: { hp: 35, def: 5 },   price: 45,  image: "ressources/Avocat.png" },
+  { id: 5,  name: "Orange",               category: "Soin",    stats: { hp: 30 },           price: 25,  image: "ressources/Orange (1).png" },
+  { id: 6,  name: "Pastèque",             category: "Soin",    stats: { hp: 60 },           price: 40,  image: "ressources/Pastèque.png" },
+  { id: 7,  name: "Figue de Barbarie",    category: "Soin",    stats: { hp: 45 },           price: 55,  image: "ressources/FigueDeBarbarie.png" },
+  { id: 8,  name: "Fruit du Passion",     category: "Soin",    stats: { hp: 40 },           price: 50,  image: "ressources/passionfruit.png" },
+  { id: 9,  name: "Chocolat",             category: "Soin",    stats: { hp: 40 },           price: 60,  image: "ressources/Chocolat.png" },
+  { id: 10, name: "Gaufre",               category: "Soin",    stats: { hp: 70 },           price: 65,  image: "ressources/Gauffre.png" },
+  { id: 11, name: "Gaufre Choco",         category: "Soin",    stats: { hp: 90 },           price: 90,  image: "ressources/GauffreChoco (1).png" },
+  { id: 12, name: "Pain Brioché",         category: "Soin",    stats: { hp: 30 },           price: 25,  image: "ressources/PainBrioché.png" },
+  { id: 13, name: "Riz",                  category: "Soin",    stats: { hp: 80 },           price: 50,  image: "ressources/Riz.png" },
+  { id: 14, name: "Bento",                category: "Soin",    stats: { hp: 150, atk: 5 },  price: 130, image: "ressources/Bento.png" },
+  { id: 15, name: "Nouilles Instantanées",category: "Soin",    stats: { hp: 60 },           price: 30,  image: "ressources/Nouille Instantanée.png" },
+  { id: 16, name: "Jiaozi",               category: "Soin",    stats: { hp: 100, def: 8 },  price: 110, image: "ressources/jiaozi.png" },
+  { id: 17, name: "Guacamole",            category: "Soin",    stats: { hp: 70, def: 10 },  price: 120, image: "ressources/Guacamole.png" },
+  { id: 18, name: "Jus d'Orange",         category: "Soin",    stats: { hp: 50, agi: 8 },   price: 55,  image: "ressources/JusOrange.png" },
+  // ── GLACE ─────────────────────────────────────────────
+  { id: 19, name: "Glace",                category: "Glace",   stats: { hp: 40 },           price: 45,  image: "ressources/Glace.png" },
+  { id: 20, name: "Glace Pastèque",       category: "Glace",   stats: { hp: 80 },           price: 80,  image: "ressources/GlacePastèque.png" },
+  // ── FEU ───────────────────────────────────────────────
+  { id: 21, name: "Piment",               category: "Feu",     stats: { atk: 20 },          price: 90,  image: "ressources/Piment.png" },
+  { id: 22, name: "Fruit du Dragon",      category: "Feu",     stats: { atk: 15 },          price: 100, image: "ressources/FruitDuDragon.png" },
   // ── VITESSE ───────────────────────────────────────────
-  {
-    id: 23,
-    name: "Café",
-    category: "Vitesse",
-    effect: "AGI +20 (3t) + Annule Sommeil",
-    price: 70,
-    tags: ["vitesse"],
-    image: "ressources/Café.png"
-  },
-  {
-    id: 24,
-    name: "Boisson Énergisante",
-    category: "Vitesse",
-    effect: "AGI +30 + ATK +10 (3t)",
-    price: 130,
-    tags: ["vitesse", "force"],
-    image: "ressources/BoissonEnergisante.png"
-  },
+  { id: 23, name: "Café",                 category: "Vitesse", stats: { agi: 20 },          price: 70,  image: "ressources/Café.png" },
+  { id: 24, name: "Boisson Énergisante",  category: "Vitesse", stats: { agi: 30, atk: 10 }, price: 130, image: "ressources/BoissonEnergisante.png" },
   // ── EAU ───────────────────────────────────────────────
-  {
-    id: 25,
-    name: "Poisson",
-    category: "Eau",
-    effect: "Restaure 60 HP + Résistance Feu",
-    price: 70,
-    tags: ["hp", "eau"],
-    image: "ressources/Poisson.png"
-  },
-  {
-    id: 26,
-    name: "Sashimi",
-    category: "Eau",
-    effect: "Restaure 90 HP + AGI +10 (2t)",
-    price: 110,
-    tags: ["hp", "eau", "vitesse"],
-    image: "ressources/Sashimi.png"
-  },
-  {
-    id: 27,
-    name: "Sushi",
-    category: "Eau",
-    effect: "Restaure 100 HP + DEF +8 (2t)",
-    price: 120,
-    tags: ["hp", "eau", "défense"],
-    image: "ressources/sushi.png"
-  },
-  {
-    id: 28,
-    name: "Sushi Saumon",
-    category: "Eau",
-    effect: "Restaure 110 HP + ATK +8 (2t)",
-    price: 130,
-    tags: ["hp", "eau", "force"],
-    image: "ressources/SuhsiSaumon.png"
-  },
-  {
-    id: 29,
-    name: "Tempura",
-    category: "Eau",
-    effect: "Restaure 120 HP + DEF +12 (3t)",
-    price: 150,
-    tags: ["hp", "eau", "défense"],
-    image: "ressources/Tempura.png"
-  },
+  { id: 25, name: "Poisson",              category: "Eau",     stats: { hp: 60 },           price: 70,  image: "ressources/Poisson.png" },
+  { id: 26, name: "Sashimi",              category: "Eau",     stats: { hp: 90, agi: 10 },  price: 110, image: "ressources/Sashimi.png" },
+  { id: 27, name: "Sushi",                category: "Eau",     stats: { hp: 100, def: 8 },  price: 120, image: "ressources/sushi.png" },
+  { id: 28, name: "Sushi Saumon",         category: "Eau",     stats: { hp: 110, atk: 8 },  price: 130, image: "ressources/SuhsiSaumon.png" },
+  { id: 29, name: "Tempura",              category: "Eau",     stats: { hp: 120, def: 12 }, price: 150, image: "ressources/Tempura.png" },
   // ── BUFF ──────────────────────────────────────────────
-  {
-    id: 30,
-    name: "Tenders",
-    category: "Buff",
-    effect: "ATK +15 + Restaure 80 HP",
-    price: 110,
-    tags: ["force", "hp"],
-    image: "ressources/Tenders.png"
-  },
-  {
-    id: 31,
-    name: "Burger",
-    category: "Buff",
-    effect: "Restaure 180 HP + ATK +15 (3t)",
-    price: 200,
-    tags: ["hp", "force"],
-    image: "ressources/Burgers.png"
-  },
-  {
-    id: 32,
-    name: "Burger Tenders",
-    category: "Buff",
-    effect: "Restaure 220 HP + ATK +20 + VIT +10 (3t)",
-    price: 250,
-    tags: ["hp", "force", "vitesse"],
-    image: "ressources/TendersBurgers.png"
-  },
-  {
-    id: 33,
-    name: "Viande Cuite",
-    category: "Buff",
-    effect: "ATK +20 + Restaure 100 HP (3t)",
-    price: 140,
-    tags: ["force", "hp"],
-    image: "ressources/ViandeCuite.png"
-  },
+  { id: 30, name: "Tenders",              category: "Buff",    stats: { hp: 80, atk: 15 },  price: 110, image: "ressources/Tenders.png" },
+  { id: 31, name: "Burger",               category: "Buff",    stats: { hp: 180, atk: 15 }, price: 200, image: "ressources/Burgers.png" },
+  { id: 32, name: "Burger Tenders",       category: "Buff",    stats: { hp: 220, atk: 20, agi: 10 }, price: 250, image: "ressources/TendersBurgers.png" },
+  { id: 33, name: "Viande Cuite",         category: "Buff",    stats: { hp: 100, atk: 20 }, price: 140, image: "ressources/ViandeCuite.png" },
   // ── SNACK ─────────────────────────────────────────────
-  {
-    id: 34,
-    name: "Chips",
-    category: "Snack",
-    effect: "Restaure 20 HP",
-    price: 15,
-    tags: ["hp"],
-    image: "ressources/Chips.png"
-  },
+  { id: 34, name: "Chips",                category: "Snack",   stats: { hp: 20 },           price: 15,  image: "ressources/Chips.png" },
   // ── SPÉCIAL ───────────────────────────────────────────
-  {
-    id: 35,
-    name: "Potion d'Amour",
-    category: "Spécial",
-    effect: "Charme l'ennemi (3t) + Moral +20",
-    price: 300,
-    tags: ["spécial"],
-    image: "ressources/potion-love.png"
-  },
-  {
-    id: 36,
-    name: "Potion Étoile",
-    category: "Spécial",
-    effect: "Tous les stats +15 (5t) + Immunité totale",
-    price: 500,
-    tags: ["spécial", "hp", "force", "vitesse", "défense"],
-    image: "ressources/potion-star.png"
-  },
-  {
-    id: 37,
-    name: "Bandage",
-    category: "Soin",
-    effect: "Soigne Saignement + Restaure 30 HP",
-    price: 35,
-    tags: ["hp"],
-    image: "ressources/bandage.png"
-  }
+  { id: 35, name: "Potion d'Amour",       category: "Spécial", stats: { hp: 50, mp: 50 },   price: 300, image: "ressources/potion-love.png" },
+  { id: 36, name: "Potion Étoile",        category: "Spécial", stats: { hp: 999, mp: 999, atk: 15, def: 15, agi: 15 }, price: 500, image: "ressources/potion-star.png" },
+  { id: 37, name: "Bandage",              category: "Soin",    stats: { hp: 30 },           price: 35,  image: "ressources/bandage.png" },
 ];
 
 // Éléments du DOM
-const btnSort = document.getElementById("btn-sort");
+const btnSort     = document.getElementById("btn-sort");
 const searchInput = document.getElementById("search");
-const form = document.getElementById("form-add");
-const inputName = document.getElementById("input-name");
+const form        = document.getElementById("form-add");
+const inputName     = document.getElementById("input-name");
 const inputCategory = document.getElementById("input-category");
-const inputEffect = document.getElementById("input-effect");
-const inputPrice = document.getElementById("input-price");
+const inputEffect   = document.getElementById("input-effect");
+const inputPrice    = document.getElementById("input-price");
 
 // Sens du tri
 let sortAsc = false;
 
-/**
- * Rafraîchit l'affichage :
- * filtre + tri
- */
+// Emoji par catégorie
+function getIcone(category) {
+  const icones = {
+    "Soin":    "💚",
+    "Buff":    "💪",
+    "Feu":     "🔥",
+    "Glace":   "❄️",
+    "Vitesse": "⚡",
+    "Eau":     "💧",
+    "Snack":   "🍿",
+    "Spécial": "⭐"
+  };
+  return icones[category] || "•";
+}
+
+// Emoji par stat
+function getStatIcone(stat) {
+  const icones = {
+    hp:  "💚",
+    mp:  "💙",
+    atk: "⚔️",
+    def: "🛡️",
+    agi: "⚡"
+  };
+  return icones[stat] || stat;
+}
+
+// Génère le HTML des stats
+function afficherStats(stats) {
+  return Object.entries(stats)
+      .map(([stat, valeur]) => `<span class="stat">${getStatIcone(stat)} ${valeur}</span>`)
+      .join("");
+}
+
+// Rafraîchit l'affichage : filtre + tri
 function refresh() {
-  // Vérifier si la recherche existe (pour compatibilité avec les deux versions)
   const query = searchInput ? searchInput.value.toLowerCase() : "";
 
-  // 1. Filtrer (si recherche existe)
   let result = data;
-  if (searchInput && query) {
+  if (query) {
     result = data.filter(item => item.name.toLowerCase().includes(query));
-  } else if (searchInput) {
-    result = [...data];
   } else {
     result = [...data];
   }
 
-  // 2. Trier
   result.sort((a, b) => sortAsc ? a.price - b.price : b.price - a.price);
-
-  // 3. Afficher
   afficherConsommables(result);
 }
 
@@ -402,7 +131,7 @@ if (searchInput) {
 }
 
 // =========================
-// AJOUT D'UNE RECETTE
+// AJOUT D'UN INGRÉDIENT
 // =========================
 if (form) {
   form.addEventListener("submit", function (event) {
@@ -412,9 +141,8 @@ if (form) {
       id: Date.now(),
       name: inputName.value.trim(),
       category: inputCategory.value,
-      effect: inputEffect.value.trim(),
+      stats: { hp: 0 },
       price: Number(inputPrice.value),
-      tags: [],
       image: "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(inputName.value.trim())
     };
 
@@ -437,17 +165,16 @@ if (listElement) {
     if (!card) return;
 
     const id = Number(card.dataset.id);
-    if (!confirm("Supprimer cette recette ?")) return;
+    if (!confirm("Supprimer cet ingrédient ?")) return;
 
     data = data.filter(item => item.id !== id);
     refresh();
   });
 }
 
-/**
- * Affiche les consommables
- * @param {Array} tabItems
- */
+// =========================
+// AFFICHAGE
+// =========================
 function afficherConsommables(tabItems) {
   const ulList = document.getElementById("list");
   if (!ulList) return;
@@ -455,37 +182,27 @@ function afficherConsommables(tabItems) {
   let html = "";
 
   tabItems.forEach(item => {
-    // Génère les tags
-    const tagsHtml = item.tags
-        .map(tag => `<span class="tag tag-${tag}">${tag}</span>`)
-        .join("");
-
     html += `
-    <article class="card" data-id="${item.id}">
+    <article class="card" data-id="${item.id}" data-category="${item.category}">
       <img src="${item.image}" alt="${item.name}">
       <div class="card-body">
-        <h2>${item.name}</h2>
-        <p>${item.category} — ${item.effect}</p>
-        <div class="tags">
-          ${tagsHtml}
+        <div class="card-category-badge">
+          ${getIcone(item.category)} ${item.category}
         </div>
-        <span class="price">
-          ${item.price} Or
-        </span>
-        <button class="btn btn-danger btn-delete">
-          Supprimer
-        </button>
+        <h2>${item.name}</h2>
+        <div class="card-stats">
+          ${afficherStats(item.stats)}
+        </div>
+        <div class="card-footer">
+          <span class="price">💸 ${item.price}</span>
+          <button class="btn-delete" data-id="${item.id}">🗑️</button>
+        </div>
       </div>
-    </article>
-    `;
+    </article>`;
   });
 
   ulList.innerHTML = html;
 }
-
-
-
-refresh();
 
 // =========================
 // ONGLETS
@@ -502,3 +219,5 @@ document.querySelectorAll(".nav-btn").forEach(function(btn) {
     document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
   });
 });
+
+refresh();

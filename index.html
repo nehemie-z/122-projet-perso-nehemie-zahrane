@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consommables — RPG Maker</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <title>Cuisine Restaurant</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-  <h1>⚗️ Boutique des Consommables</h1>
+  <div class="logo">
+    <span class="logo-my">My</span>
+    <span class="logo-main">Cuisine</span>
+    <span class="logo-star">★</span>
+    <span class="logo-sub">Restaurant</span>
+  </div>
   <p class="header-sub">Ingrédients & Recettes du Monde</p>
 </header>
 
@@ -24,24 +26,26 @@
 
 <main>
 
-  <!-- ===== ONGLET INGRÉDIENTS ===== -->
+  <!-- Onglet Ingrédients -->
   <section id="tab-shop" class="tab-content active">
     <div class="controls">
-      <input type="text" id="search" placeholder="🔍 Rechercher un ingrédient...">
       <button id="btn-sort">Trier par prix ↓ (DESC)</button>
+      <input type="text" id="search" placeholder="🔍 Rechercher un ingrédient...">
     </div>
     <ul id="list"></ul>
   </section>
 
-  <!-- ===== ONGLET RECETTES ===== -->
+  <!-- Onglet Recettes -->
   <section id="tab-recipes" class="tab-content">
-    <h2 class="section-title">📜 Livre de Recettes</h2>
+    <h2>📜 Livre de Recettes</h2>
     <div id="recipes-list"></div>
   </section>
 
-  <!-- ===== ONGLET CUISINE ===== -->
+  <!-- Onglet Cuisine -->
   <section id="tab-craft" class="tab-content">
-    <h2 class="section-title">⚗️ Atelier de Cuisine</h2>
+    <h2>⚗️ Atelier de Cuisine</h2>
+    <div id="kitchen-slots"></div>
+    <div id="kitchen-result"></div>
 
     <form id="form-add">
       <div class="form-group">
@@ -71,13 +75,12 @@
       </div>
       <button type="submit">Ajouter</button>
     </form>
-
   </section>
 
 </main>
 
 <footer>
-  <p>⚗️ Boutique des Consommables — RPG Maker</p>
+  <p>⚗️ My Cuisine Restaurant</p>
 </footer>
 
 <script src="js/script.js"></script>
