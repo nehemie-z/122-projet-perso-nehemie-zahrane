@@ -1,99 +1,347 @@
 "use strict";
-
 // Tableau de données — consommables RPG Maker
 let data = [
+  // ── SOIN ──────────────────────────────────────────────
   {
     id: 1,
-    name: "Soupe de Champignons",
+    name: "Salade",
+    category: "Soin",
+    effect: "Restaure 20 HP",
+    price: 15,
+    tags: ["hp"],
+    image: "ressources/Salade.png"
+  },
+  {
+    id: 2,
+    name: "Tomate",
+    category: "Soin",
+    effect: "Restaure 25 HP",
+    price: 20,
+    tags: ["hp"],
+    image: "ressources/Tomate.png"
+  },
+  {
+    id: 3,
+    name: "Salade de Tomate",
+    category: "Soin",
+    effect: "Restaure 50 HP",
+    price: 40,
+    tags: ["hp"],
+    image: "ressources/SaladeTomate.png"
+  },
+  {
+    id: 4,
+    name: "Avocat",
+    category: "Soin",
+    effect: "Restaure 35 HP + DEF +5 (2t)",
+    price: 45,
+    tags: ["hp", "défense"],
+    image: "ressources/Avocat.png"
+  },
+  {
+    id: 5,
+    name: "Orange",
+    category: "Soin",
+    effect: "Restaure 30 HP + Annule Poison",
+    price: 25,
+    tags: ["hp"],
+    image: "ressources/Orange (1).png"
+  },
+  {
+    id: 6,
+    name: "Pastèque",
+    category: "Soin",
+    effect: "Restaure 60 HP + Annule Chaleur",
+    price: 40,
+    tags: ["hp"],
+    image: "ressources/Pastèque.png"
+  },
+  {
+    id: 7,
+    name: "Figue de Barbarie",
+    category: "Soin",
+    effect: "Restaure 45 HP + Résistance Feu",
+    price: 55,
+    tags: ["hp"],
+    image: "ressources/FigueDeBarbarie.png"
+  },
+  {
+    id: 8,
+    name: "Fruit du Passion",
+    category: "Soin",
+    effect: "Restaure 40 HP + Moral +10",
+    price: 50,
+    tags: ["hp"],
+    image: "ressources/passionfruit.png"
+  },
+  {
+    id: 9,
+    name: "Chocolat",
+    category: "Soin",
+    effect: "Restaure 40 HP + Moral +10",
+    price: 60,
+    tags: ["hp"],
+    image: "ressources/Chocolat.png"
+  },
+  {
+    id: 10,
+    name: "Gaufre",
+    category: "Soin",
+    effect: "Restaure 70 HP",
+    price: 65,
+    tags: ["hp"],
+    image: "ressources/Gauffre.png"
+  },
+  {
+    id: 11,
+    name: "Gaufre Choco",
+    category: "Soin",
+    effect: "Restaure 90 HP + Moral +15",
+    price: 90,
+    tags: ["hp"],
+    image: "ressources/GauffreChoco (1).png"
+  },
+  {
+    id: 12,
+    name: "Pain Brioché",
+    category: "Soin",
+    effect: "Restaure 30 HP + Satiété",
+    price: 25,
+    tags: ["hp"],
+    image: "ressources/PainBrioché.png"
+  },
+  {
+    id: 13,
+    name: "Riz",
     category: "Soin",
     effect: "Restaure 80 HP",
     price: 50,
     tags: ["hp"],
-    image: "https://placehold.co/400x300/27ae60/white?text=Soupe+de+Champignons"
+    image: "ressources/Riz.png"
   },
   {
-    id: 2,
-    name: "Tarte Épicée",
-    category: "Attaque",
-    effect: "Brûlure infligée + ATK +15 (3t)",
+    id: 14,
+    name: "Bento",
+    category: "Soin",
+    effect: "Restaure 150 HP + ATK +5 (2t)",
+    price: 130,
+    tags: ["hp", "force"],
+    image: "ressources/Bento.png"
+  },
+  {
+    id: 15,
+    name: "Nouilles Instantanées",
+    category: "Soin",
+    effect: "Restaure 60 HP",
+    price: 30,
+    tags: ["hp"],
+    image: "ressources/Nouille Instantanée.png"
+  },
+  {
+    id: 16,
+    name: "Jiaozi",
+    category: "Soin",
+    effect: "Restaure 100 HP + DEF +8 (2t)",
+    price: 110,
+    tags: ["hp", "défense"],
+    image: "ressources/jiaozi.png"
+  },
+  {
+    id: 17,
+    name: "Guacamole",
+    category: "Soin",
+    effect: "Restaure 70 HP + DEF +10 (3t)",
     price: 120,
+    tags: ["hp", "défense"],
+    image: "ressources/Guacamole.png"
+  },
+  {
+    id: 18,
+    name: "Jus d'Orange",
+    category: "Soin",
+    effect: "Restaure 50 HP + VIT +8 (2t)",
+    price: 55,
+    tags: ["hp", "vitesse"],
+    image: "ressources/JusOrange.png"
+  },
+  {
+    id: 19,
+    name: "Glace",
+    category: "Glace",
+    effect: "Restaure 40 HP + Annule Brûlure",
+    price: 45,
+    tags: ["hp", "glace"],
+    image: "ressources/Glace.png"
+  },
+  {
+    id: 20,
+    name: "Glace Pastèque",
+    category: "Glace",
+    effect: "Restaure 80 HP + Annule Brûlure + Chaleur",
+    price: 80,
+    tags: ["hp", "glace"],
+    image: "ressources/GlacePastèque.png"
+  },
+  // ── ATTAQUE ───────────────────────────────────────────
+  {
+    id: 21,
+    name: "Piment",
+    category: "Feu",
+    effect: "ATK +20 + Inflige Brûlure (2t)",
+    price: 90,
     tags: ["feu", "force"],
-    image: "https://placehold.co/400x300/e74c3c/white?text=Tarte+Épicée"
+    image: "ressources/Piment.png"
   },
   {
-    id: 3,
-    name: "Gelée de Givre",
-    category: "Soin",
-    effect: "Annule Gel + restaure 30 HP",
+    id: 22,
+    name: "Fruit du Dragon",
+    category: "Feu",
+    effect: "ATK +15 + Résistance Feu (3t)",
     price: 100,
-    tags: ["glace", "hp"],
-    image: "https://placehold.co/400x300/4a90d9/white?text=Gelée+de+Givre"
+    tags: ["feu"],
+    image: "ressources/FruitDuDragon.png"
   },
+  // ── VITESSE ───────────────────────────────────────────
   {
-    id: 4,
-    name: "Thé Venteux",
-    category: "Buff",
-    effect: "AGI +20 pendant 4 tours",
-    price: 150,
+    id: 23,
+    name: "Café",
+    category: "Vitesse",
+    effect: "AGI +20 (3t) + Annule Sommeil",
+    price: 70,
     tags: ["vitesse"],
-    image: "https://placehold.co/400x300/f39c12/white?text=Thé+Venteux"
+    image: "ressources/Café.png"
   },
   {
-    id: 5,
-    name: "Rôti de Sanglier Royal",
-    category: "Soin",
-    effect: "Restaure 200 HP + ATK +10 (5t)",
+    id: 24,
+    name: "Boisson Énergisante",
+    category: "Vitesse",
+    effect: "AGI +30 + ATK +10 (3t)",
+    price: 130,
+    tags: ["vitesse", "force"],
+    image: "ressources/BoissonEnergisante.png"
+  },
+  // ── EAU ───────────────────────────────────────────────
+  {
+    id: 25,
+    name: "Poisson",
+    category: "Eau",
+    effect: "Restaure 60 HP + Résistance Feu",
+    price: 70,
+    tags: ["hp", "eau"],
+    image: "ressources/Poisson.png"
+  },
+  {
+    id: 26,
+    name: "Sashimi",
+    category: "Eau",
+    effect: "Restaure 90 HP + AGI +10 (2t)",
+    price: 110,
+    tags: ["hp", "eau", "vitesse"],
+    image: "ressources/Sashimi.png"
+  },
+  {
+    id: 27,
+    name: "Sushi",
+    category: "Eau",
+    effect: "Restaure 100 HP + DEF +8 (2t)",
+    price: 120,
+    tags: ["hp", "eau", "défense"],
+    image: "ressources/sushi.png"
+  },
+  {
+    id: 28,
+    name: "Sushi Saumon",
+    category: "Eau",
+    effect: "Restaure 110 HP + ATK +8 (2t)",
+    price: 130,
+    tags: ["hp", "eau", "force"],
+    image: "ressources/SuhsiSaumon.png"
+  },
+  {
+    id: 29,
+    name: "Tempura",
+    category: "Eau",
+    effect: "Restaure 120 HP + DEF +12 (3t)",
+    price: 150,
+    tags: ["hp", "eau", "défense"],
+    image: "ressources/Tempura.png"
+  },
+  // ── BUFF ──────────────────────────────────────────────
+  {
+    id: 30,
+    name: "Tenders",
+    category: "Buff",
+    effect: "ATK +15 + Restaure 80 HP",
+    price: 110,
+    tags: ["force", "hp"],
+    image: "ressources/Tenders.png"
+  },
+  {
+    id: 31,
+    name: "Burger",
+    category: "Buff",
+    effect: "Restaure 180 HP + ATK +15 (3t)",
     price: 200,
     tags: ["hp", "force"],
-    image: "https://placehold.co/400x300/e67e22/white?text=Rôti+Royal"
+    image: "ressources/Burgers.png"
   },
   {
-    id: 6,
-    name: "Bouillon d'Arcane",
-    category: "Soin",
-    effect: "Restaure 60 MP",
-    price: 90,
-    tags: ["mp"],
-    image: "https://placehold.co/400x300/8e44ad/white?text=Bouillon+Arcane"
-  },
-  {
-    id: 7,
-    name: "Miel de Fer",
+    id: 32,
+    name: "Burger Tenders",
     category: "Buff",
-    effect: "DEF +12 pendant 4 tours",
-    price: 180,
-    tags: ["défense"],
-    image: "https://placehold.co/400x300/f39c12/white?text=Miel+de+Fer"
+    effect: "Restaure 220 HP + ATK +20 + VIT +10 (3t)",
+    price: 250,
+    tags: ["hp", "force", "vitesse"],
+    image: "ressources/TendersBurgers.png"
   },
   {
-    id: 8,
-    name: "Sorbet Arctique",
-    category: "Attaque",
-    effect: "Inflige Gel + résistance feu (2t)",
-    price: 80,
-    tags: ["glace", "feu"],
-    image: "https://placehold.co/400x300/4a90d9/white?text=Sorbet+Arctique"
+    id: 33,
+    name: "Viande Cuite",
+    category: "Buff",
+    effect: "ATK +20 + Restaure 100 HP (3t)",
+    price: 140,
+    tags: ["force", "hp"],
+    image: "ressources/ViandeCuite.png"
+  },
+  // ── SNACK ─────────────────────────────────────────────
+  {
+    id: 34,
+    name: "Chips",
+    category: "Snack",
+    effect: "Restaure 20 HP",
+    price: 15,
+    tags: ["hp"],
+    image: "ressources/Chips.png"
+  },
+  // ── SPÉCIAL ───────────────────────────────────────────
+  {
+    id: 35,
+    name: "Potion d'Amour",
+    category: "Spécial",
+    effect: "Charme l'ennemi (3t) + Moral +20",
+    price: 300,
+    tags: ["spécial"],
+    image: "ressources/potion-love.png"
   },
   {
-    id: 9,
-    name: "Festin du Voyageur",
-    category: "Soin",
-    effect: "Restaure 150 HP + 80 MP + annule états",
-    price: 350,
-    tags: ["hp", "mp", "glace", "feu"],
-    image: "https://placehold.co/400x300/27ae60/white?text=Festin+Voyageur"
-  },
-  {
-    id: 10,
-    name: "Consommé de Dragon",
-    category: "Légendaire",
-    effect: "PV + PM complets, ATK +30, AGI +20 (5t)",
+    id: 36,
+    name: "Potion Étoile",
+    category: "Spécial",
+    effect: "Tous les stats +15 (5t) + Immunité totale",
     price: 500,
-    tags: ["hp", "mp", "force", "vitesse"],
-    image: "https://placehold.co/400x300/c0392b/white?text=Consommé+de+Dragon"
+    tags: ["spécial", "hp", "force", "vitesse", "défense"],
+    image: "ressources/potion-star.png"
+  },
+  {
+    id: 37,
+    name: "Bandage",
+    category: "Soin",
+    effect: "Soigne Saignement + Restaure 30 HP",
+    price: 35,
+    tags: ["hp"],
+    image: "ressources/bandage.png"
   }
 ];
-
 // Éléments du DOM
 const btnSort = document.getElementById("btn-sort");
 const searchInput = document.getElementById("search");
@@ -233,7 +481,5 @@ function afficherConsommables(tabItems) {
   ulList.innerHTML = html;
 }
 
-// =========================
-// AFFICHAGE INITIAL
-// =========================
+
 refresh();
