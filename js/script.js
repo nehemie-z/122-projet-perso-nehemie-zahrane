@@ -135,6 +135,18 @@ function refresh() {
   afficherConsommables(result);
 }
 
+// Toast — message temporaire en bas à droite
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(function() {
+    toast.classList.add("toast-hide");
+    setTimeout(function() { toast.remove(); }, 400);
+  }, 2000);
+}
+
 // =========================
 // TRI
 // =========================
@@ -237,6 +249,7 @@ if (form) {
     };
 
     data.push(nouveauItem);
+    showToast("✅ Plat ajouté !");
     refresh();
     form.reset();
 
@@ -262,6 +275,7 @@ if (listElement) {
       if (!confirm("Supprimer cet ingrédient ?")) return;
       const index = data.findIndex(item => item.id === id);
       if (index !== -1) data.splice(index, 1);
+      showToast("🗑️ Ingrédient supprimé !");
       refresh();
       return;
     }
@@ -316,7 +330,9 @@ if (listElement) {
       data[index].price = Number(card.querySelector(".edit-price").value);
       data[index].stats = Object.keys(stats).length > 0 ? stats : { hp: 0 };
 
+      showToast("✏️ " + data[index].name + " modifié !");
       refresh();
+      document.querySelector('[data-tab="shop"]').click();
       return;
     }
 
