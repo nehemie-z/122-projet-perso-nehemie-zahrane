@@ -107,7 +107,7 @@ function getStatIcone(stat) {
 // Calcule le pourcentage par rapport au max pour la barre
 function afficherStats(stats) {
   return Object.entries(stats).map(function([stat, valeur]) {
-    const max     = STAT_MAX[stat] || 100;
+    const max      = STAT_MAX[stat] || 100;
     const pourcent = Math.min((valeur / max) * 100, 100);
     return `
       <div class="stat">
@@ -276,13 +276,13 @@ if (listElement) {
       const card = editBtn.closest(".card");
       card.innerHTML = `
         <div class="card-edit-form">
-          <input class="edit-name"  type="text"   value="${item.name}"           placeholder="Nom">
-          <input class="edit-price" type="number" value="${item.price}"          placeholder="Prix" min="1">
-          <input class="edit-hp"    type="number" value="${item.stats.hp  || 0}" placeholder="❤️ HP"  min="0">
-          <input class="edit-atk"   type="number" value="${item.stats.atk || 0}" placeholder="ATK" min="0">
-          <input class="edit-def"   type="number" value="${item.stats.def || 0}" placeholder="DEF" min="0">
-          <input class="edit-agi"   type="number" value="${item.stats.agi || 0}" placeholder="AGI" min="0">
-          <input class="edit-mp"    type="number" value="${item.stats.mp  || 0}" placeholder="⚡ MP"  min="0">
+          <label>Nom <input class="edit-name" type="text" value="${item.name}"></label>
+          <label><img src="ressources/Coin.png" class="stat-icon"> Prix <input class="edit-price" type="number" value="${item.price}" min="1"></label>
+          <label>❤️ HP <input class="edit-hp" type="number" value="${item.stats.hp  || 0}" min="0"></label>
+          <label><img src="ressources/Harold4.png" class="stat-icon"> ATK <input class="edit-atk" type="number" value="${item.stats.atk || 0}" min="0"></label>
+          <label><img src="ressources/Shield1.png" class="stat-icon"> DEF <input class="edit-def" type="number" value="${item.stats.def || 0}" min="0"></label>
+          <label><img src="ressources/Harold3.png" class="stat-icon"> AGI <input class="edit-agi" type="number" value="${item.stats.agi || 0}" min="0"></label>
+          <label>⚡ MP <input class="edit-mp" type="number" value="${item.stats.mp  || 0}" min="0"></label>
           <div class="edit-actions">
             <button class="btn-save-edit" data-id="${id}">✅</button>
             <button class="btn-cancel-edit">✕</button>
