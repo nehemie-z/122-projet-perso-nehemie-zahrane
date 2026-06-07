@@ -287,7 +287,8 @@ nav {
   color: var(--orange-fonce);
 }
 
-.btn-delete {
+.btn-delete,
+.btn-edit {
   background: none;
   border: none;
   cursor: pointer;
@@ -296,7 +297,8 @@ nav {
   transition: opacity 0.2s;
 }
 
-.btn-delete:hover {
+.btn-delete:hover,
+.btn-edit:hover {
   opacity: 1;
 }
 
@@ -309,6 +311,7 @@ nav {
 .card[data-category="Snack"]   { border-color: var(--rouge); }
 .card[data-category="Spécial"] { border-color: var(--violet); }
 
+/* Carte vide */
 .card-add {
   justify-content: center;
   border: 2px dashed var(--orange);
@@ -326,6 +329,51 @@ nav {
 
 .card-add-inner span { font-size: 1.8rem; }
 .card-add-inner p    { font-size: 0.8rem; font-weight: bold; }
+
+/* Formulaire inline d'édition */
+.card-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  width: 100%;
+}
+
+.card-edit-form input {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--orange);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--brun);
+  outline: none;
+  width: 100%;
+}
+
+.card-edit-form input:focus {
+  border-color: var(--orange-fonce);
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.btn-save-edit,
+.btn-cancel-edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.btn-save-edit:hover,
+.btn-cancel-edit:hover {
+  opacity: 1;
+}
 
 /* ── RECETTES ─────────────────────────────── */
 

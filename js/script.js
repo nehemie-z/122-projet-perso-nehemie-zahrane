@@ -76,7 +76,6 @@ const filterCategory = document.getElementById("filter-category");
 const form           = document.getElementById("form-add");
 
 let sortAsc = false;
-let editId  = null;
 
 const STAT_MAX = { hp: 2000, mp: 999, atk: 50, def: 20, agi: 30 };
 
@@ -108,7 +107,7 @@ function getStatIcone(stat) {
 // Calcule le pourcentage par rapport au max pour la barre
 function afficherStats(stats) {
   return Object.entries(stats).map(function([stat, valeur]) {
-    const max = STAT_MAX[stat] || 100;
+    const max     = STAT_MAX[stat] || 100;
     const pourcent = Math.min((valeur / max) * 100, 100);
     return `
       <div class="stat">
@@ -209,7 +208,7 @@ function lireImage(file) {
 }
 
 // =========================
-// AJOUT / MODIFICATION
+// AJOUT D'UN PLAT
 // =========================
 if (form) {
   form.addEventListener("submit", function(event) {
@@ -228,7 +227,8 @@ if (form) {
     if (agi > 0) stats.agi = agi;
     if (mp  > 0) stats.mp  = mp;
 
-    const itemData = {
+    const nouveauItem = {
+      id:       Date.now(),
       name:     document.getElementById("input-name").value.trim(),
       category: document.getElementById("input-category").value,
       stats:    Object.keys(stats).length > 0 ? stats : { hp: 0 },
@@ -236,16 +236,7 @@ if (form) {
       image:    imageBase64 || "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(document.getElementById("input-name").value.trim())
     };
 
-    if (editId !== null) {
-      // Mode édition — remplace l'item existant sans changer l'id
-      const index = data.findIndex(i => i.id === editId);
-      if (index !== -1) data[index] = { ...itemData, id: editId };
-      editId = null;
-      document.querySelector("button[type='submit']").textContent = "Ajouter à la boutique";
-    } else {
-      data.push({ ...itemData, id: Date.now() });
-    }
-
+    data.push(nouveauItem);
     refresh();
     form.reset();
 
@@ -258,7 +249,7 @@ if (form) {
 }
 
 // =========================
-// SUPPRESSION + ÉDITION
+// SUPPRESSION + ÉDITION INLINE
 // =========================
 const listElement = document.getElementById("list");
 if (listElement) {
@@ -275,25 +266,64 @@ if (listElement) {
       return;
     }
 
-    // Édition — pré-remplit le formulaire avec les données de l'item
+    // Ouvre le mini formulaire inline sur la carte
     const editBtn = event.target.closest(".btn-edit");
     if (editBtn) {
       const id   = Number(editBtn.dataset.id);
       const item = data.find(i => i.id === id);
       if (!item) return;
 
-      document.getElementById("input-name").value     = item.name;
-      document.getElementById("input-category").value = item.category;
-      document.getElementById("input-price").value    = item.price;
-      document.getElementById("input-hp").value       = item.stats.hp  || 0;
-      document.getElementById("input-atk").value      = item.stats.atk || 0;
-      document.getElementById("input-def").value      = item.stats.def || 0;
-      document.getElementById("input-agi").value      = item.stats.agi || 0;
-      document.getElementById("input-mp").value       = item.stats.mp  || 0;
+      const card = editBtn.closest(".card");
+      card.innerHTML = `
+        <div class="card-edit-form">
+          <input class="edit-name"  type="text"   value="${item.name}"           placeholder="Nom">
+          <input class="edit-price" type="number" value="${item.price}"          placeholder="Prix" min="1">
+          <input class="edit-hp"    type="number" value="${item.stats.hp  || 0}" placeholder="❤️ HP"  min="0">
+          <input class="edit-atk"   type="number" value="${item.stats.atk || 0}" placeholder="ATK" min="0">
+          <input class="edit-def"   type="number" value="${item.stats.def || 0}" placeholder="DEF" min="0">
+          <input class="edit-agi"   type="number" value="${item.stats.agi || 0}" placeholder="AGI" min="0">
+          <input class="edit-mp"    type="number" value="${item.stats.mp  || 0}" placeholder="⚡ MP"  min="0">
+          <div class="edit-actions">
+            <button class="btn-save-edit" data-id="${id}">✅</button>
+            <button class="btn-cancel-edit">✕</button>
+          </div>
+        </div>`;
+      return;
+    }
 
-      editId = id;
-      document.querySelector("button[type='submit']").textContent = "Modifier";
-      document.querySelector('[data-tab="craft"]').click();
+    // Sauvegarde les modifs inline
+    const saveBtn = event.target.closest(".btn-save-edit");
+    if (saveBtn) {
+      const id    = Number(saveBtn.dataset.id);
+      const card  = saveBtn.closest(".card");
+      const index = data.findIndex(i => i.id === id);
+      if (index === -1) return;
+
+      const stats = {};
+      const hp  = Number(card.querySelector(".edit-hp").value);
+      const atk = Number(card.querySelector(".edit-atk").value);
+      const def = Number(card.querySelector(".edit-def").value);
+      const agi = Number(card.querySelector(".edit-agi").value);
+      const mp  = Number(card.querySelector(".edit-mp").value);
+
+      if (hp  > 0) stats.hp  = hp;
+      if (atk > 0) stats.atk = atk;
+      if (def > 0) stats.def = def;
+      if (agi > 0) stats.agi = agi;
+      if (mp  > 0) stats.mp  = mp;
+
+      data[index].name  = card.querySelector(".edit-name").value.trim();
+      data[index].price = Number(card.querySelector(".edit-price").value);
+      data[index].stats = Object.keys(stats).length > 0 ? stats : { hp: 0 };
+
+      refresh();
+      return;
+    }
+
+    // Annule l'édition
+    const cancelBtn = event.target.closest(".btn-cancel-edit");
+    if (cancelBtn) {
+      refresh();
     }
   });
 }
