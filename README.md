@@ -1,84 +1,75 @@
-# Mon projet 122
-
+# Les Recettes d'Avdol — Hunter Fantasy
 Projet JavaScript — Cours 122 (ESIG)
 
 ## Description
-
-[Décris ton projet ici : quel type de données tu gères et pourquoi tu as choisi cette ressource]
-
-## Lien GitHub Pages
-
-[Colle ici le lien de ton site en ligne]
-
-## Fonctionnalités
-
-- [ ] Affichage dynamique de la liste
-- [ ] Tri par plusieurs critères
-- [ ] Recherche en temps réel
-- [ ] Ajout via formulaire
-- [ ] Suppression d'éléments
-- [ ] Responsive (mobile + desktop)
-
-## Captures d'écran
-
-[Ajoute des captures de ton projet ici]
-
-## Transparence IA
-
-### Outils utilisés
-[Quels outils d'IA as-tu utilisés ? (Copilot, ChatGPT, Claude, etc.)]
-
-### Prompts utilisés
-[Copie ici les prompts importants que tu as donnés à l'IA]
-
-### Ce que j'ai appris vs ce que l'IA a généré
-[Explique ce que tu as écrit toi-même et ce que l'IA a produit. Qu'as-tu appris en utilisant l'IA ?]
-
----
-
-<details>
-<summary>📋 Exemple — Projet "Jeux Vidéo"</summary>
-
-> Cet exemple montre à quoi pourrait ressembler un README complété.
-> **Supprime cet encart** quand tu remplis ton propre README.
-
-## Description
-
-Application web pour gérer ma collection de jeux vidéo. J'ai choisi cette
-ressource car je suis passionné de gaming et je voulais un catalogue personnel
-pour trier mes jeux par note et plateforme.
+Site web de gestion de consommables RPG inspiré de mon jeu video que je suis entrain de faire.
+J'ai choisi de gérer des ingrédients et recettes de cuisine façon jeu vidéo car je voulais un outil
+qui me serve vraiment — la boutique d'items de mon jeu "Hunter Fantasy". Chaque ingrédient a des stats
+(HP, MP, ATK, DEF, AGI) et un prix en Or, comme dans un vrai RPG.
 
 ## Lien GitHub Pages
+https://nehemie-z.github.io/122-projet-perso-nehemie-zahrane/
 
-https://mon-pseudo.github.io/esig-122-jeux-video/
+## Dépôt GitHub
+https://github.com/nehemie-z/122-projet-perso-nehemie-zahrane/
 
 ## Fonctionnalités
-
-- [x] Affichage dynamique de la liste (cartes avec image, nom, catégorie, note)
-- [x] Tri par nom, note et année
+- [x] Affichage dynamique de la liste (cartes avec image, nom, catégorie, stats RPG)
+- [x] Tri par prix (ascendant / descendant)
 - [x] Recherche en temps réel par nom
-- [x] Ajout d'un jeu via formulaire
+- [x] Filtrage par catégorie (Soin, Buff, Feu, Glace, Vitesse, Eau, Snack, Spécial)
+- [x] Ajout d'un ingrédient via formulaire avec drag & drop d'image
 - [x] Suppression avec confirmation
+- [x] Modification inline directement sur la carte
+- [x] Livre de recettes (combinaisons d'ingrédients → plat)
+- [x] Notifications visuelles (toast) à chaque action
 - [x] Responsive (mobile + desktop)
 
 ## Captures d'écran
 
-![Aperçu desktop](img/screenshot-desktop.png)
-![Aperçu mobile](img/screenshot-mobile.png)
+### Onglet Ingrédients
+<img width="1887" height="944" alt="image" src="https://github.com/user-attachments/assets/4e2fcbc9-0cd2-4743-8edf-3d4f5f7739d9" />
+
+
+### Livre de Recettes
+<img width="1871" height="939" alt="image" src="https://github.com/user-attachments/assets/498ad6e0-2ad3-46f1-babe-b8e044c68286" />
+
+
+### Formulaire d'ajout
+<img width="542" height="567" alt="image" src="https://github.com/user-attachments/assets/089ab4e0-6baf-4592-9dc2-960eae5b17e7" />
+
 
 ## Transparence IA
 
 ### Outils utilisés
-- GitHub Copilot (dans WebStorm) pour la génération des données et l'autocomplétion
-- ChatGPT pour comprendre `Array.sort()` avec `localeCompare()`
+- Claude (Anthropic) — utilisé tout au long du projet
 
-### Prompts utilisés
-- "Génère un tableau de 10 jeux vidéo avec id, name, category, platform, rating, year, image"
-- "Explique-moi comment trier un tableau d'objets par une propriété texte en JavaScript"
 
-### Ce que j'ai appris vs ce que l'IA a généré
-- **Généré par l'IA** : le tableau de données initial (10 objets)
-- **Écrit par moi** : toute la logique d'affichage, tri, recherche, ajout et suppression
-- **Appris grâce à l'IA** : j'ai compris comment `localeCompare()` gère les accents en français
+### Ce que j'ai fait avec l'IA
 
-</details>
+**CSS & Design**
+J'ai beaucoup utilisé Claude pour le CSS car je voulais un résultat visuel professionnel.
+Le site est directement lié à mon jeu RPG Maker MZ que je développe en parallèle,
+donc l'esthétique comptait vraiment. Claude m'a aidé à construire les cartes horizontales avec barres de progression,
+et le style général "jeu vidéo / restaurant".
+
+**Correction de logique JS**
+Sur la fonctionnalité de modification, ma première approche (réutiliser le formulaire d'ajout)
+posait des problèmes de logique — le formulaire ne modifiait pas vraiment l'item existant.
+Claude m'a proposé une alternative : un mini formulaire inline directement sur la carte,
+ce qui était plus propre et plus intuitif pour l'utilisateur.
+
+**Travail fait par moi**
+- La structure des données (choix des stats, des catégories, des recettes)
+- Le tableau des different ingrédients de la boutique 
+- Les recettes et leur logique (combinaisons avec variantes)
+- Affihage du tableau dans le code html
+- Creation du formulaire d'ajout
+- Une partie de la modification des carte
+
+### Ce que j'ai appris ( code que je ne connaiaissait pas et donc demander à l'IA )
+- Comment `splice` et `findIndex` fonctionnent ensemble pour supprimer proprement
+- La différence entre `filter` (nouveau tableau) et `splice` (modification en place)
+- Le système de drag & drop avec `FileReader` pour lire une image en base64
+- Comment `closest()` permet de remonter dans le DOM depuis un bouton pour trouver la carte parente
+Mets les 3 screenshots dans un dossier img/ à la racine de ton projet avec ces noms :
