@@ -26,22 +26,30 @@
 
 <main>
 
-  <!-- Onglet Ingrédients -->
   <section id="tab-shop" class="tab-content active">
     <div class="controls">
       <button id="btn-sort">Trier par prix ↓ (DESC)</button>
       <input type="text" id="search" placeholder="🔍 Rechercher un ingrédient...">
+      <select id="filter-category">
+        <option value="all">Toutes catégories</option>
+        <option value="Soin">💚 Soin</option>
+        <option value="Buff">💪 Buff</option>
+        <option value="Feu">🔥 Feu</option>
+        <option value="Glace">❄️ Glace</option>
+        <option value="Vitesse">⚡ Vitesse</option>
+        <option value="Eau">💧 Eau</option>
+        <option value="Snack">🍿 Snack</option>
+        <option value="Spécial">⭐ Spécial</option>
+      </select>
     </div>
     <ul id="list"></ul>
   </section>
 
-  <!-- Onglet Recettes -->
   <section id="tab-recipes" class="tab-content">
     <h2>📜 Livre de Recettes</h2>
     <div id="recipes-list"></div>
   </section>
 
-  <!-- Onglet Ajouter un plat -->
   <section id="tab-craft" class="tab-content">
     <h2>➕ Ajouter un plat</h2>
     <form id="form-add">
@@ -116,3 +124,4 @@
 
 <script src="js/script.js"></script>
 </body>
+</html>

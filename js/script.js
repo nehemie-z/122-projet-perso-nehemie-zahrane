@@ -12,7 +12,7 @@ let data = [
   { id: 8,  name: "Fruit du Passion",     category: "Soin",    stats: { hp: 40 },           price: 50,  image: "ressources/passionfruit.png" },
   { id: 9,  name: "Chocolat",             category: "Soin",    stats: { mp: 40 },           price: 60,  image: "ressources/Chocolat.png" },
   { id: 10, name: "Gaufre",               category: "Soin",    stats: { hp: 70 },           price: 65,  image: "ressources/Gauffre.png" },
-  { id: 11, name: "Gaufre Choco",         category: "Soin",    stats: { hp: 70, mp: 40 },           price: 100,  image: "ressources/GauffreChoco (1).png" },
+  { id: 11, name: "Gaufre Choco",         category: "Soin",    stats: { hp: 70, mp: 40 },   price: 100, image: "ressources/GauffreChoco (1).png" },
   { id: 12, name: "Pain Brioché",         category: "Soin",    stats: { hp: 30 },           price: 25,  image: "ressources/PainBrioché.png" },
   { id: 13, name: "Riz",                  category: "Soin",    stats: { hp: 80 },           price: 50,  image: "ressources/Riz.png" },
   { id: 14, name: "Bento",                category: "Soin",    stats: { hp: 150, atk: 5 },  price: 130, image: "ressources/Bento.png" },
@@ -22,7 +22,7 @@ let data = [
   { id: 18, name: "Jus d'Orange",         category: "Soin",    stats: { hp: 50, agi: 8 },   price: 55,  image: "ressources/JusOrange.png" },
   { id: 39, name: "Carotte",              category: "Soin",    stats: { hp: 30, def: 5 },   price: 20,  image: "ressources/Carotte.png" },
   { id: 40, name: "Blé",                  category: "Soin",    stats: { hp: 25 },           price: 15,  image: "ressources/Blé.png" },
-  { id: 44, name: "Thé à la Menthe", category: "Soin", stats: { hp: 45, mp: 30 }, price: 40, image: "ressources/theMenthe.png" },
+  { id: 44, name: "Thé à la Menthe",      category: "Soin",    stats: { hp: 45, mp: 30 },   price: 40,  image: "ressources/theMenthe.png" },
   // ── GLACE ─────────────────────────────────────────────
   { id: 19, name: "Glace",                category: "Glace",   stats: { hp: 40 },           price: 45,  image: "ressources/Glace.png" },
   { id: 20, name: "Glace Pastèque",       category: "Glace",   stats: { hp: 80 },           price: 80,  image: "ressources/GlacePastèque.png" },
@@ -34,7 +34,7 @@ let data = [
   { id: 24, name: "Boisson Énergisante",  category: "Vitesse", stats: { agi: 30, atk: 10 }, price: 130, image: "ressources/BoissonEnergisante.png" },
   // ── EAU ───────────────────────────────────────────────
   { id: 25, name: "Poisson",              category: "Eau",     stats: { hp: 60 },           price: 70,  image: "ressources/Poisson.png" },
-  { id: 26, name: "Sashimi",              category: "Eau",     stats: { hp: 150, agi: 10 },  price: 150, image: "ressources/Sashimi.png" },
+  { id: 26, name: "Sashimi",              category: "Eau",     stats: { hp: 150, agi: 10 }, price: 150, image: "ressources/Sashimi.png" },
   { id: 27, name: "Sushi",                category: "Eau",     stats: { hp: 100, def: 8 },  price: 120, image: "ressources/sushi.png" },
   { id: 29, name: "Tempura",              category: "Eau",     stats: { hp: 120, def: 12 }, price: 150, image: "ressources/Tempura.png" },
   // ── BUFF ──────────────────────────────────────────────
@@ -49,15 +49,12 @@ let data = [
   { id: 34, name: "Chips",                category: "Snack",   stats: { hp: 20 },           price: 15,  image: "ressources/Chips.png" },
   { id: 41, name: "Chips Pimentée",       category: "Snack",   stats: { hp: 20, agi: 5 },   price: 25,  image: "ressources/ChipsPimenté.png" },
   // ── SPÉCIAL ───────────────────────────────────────────
-  { id: 35, name: "Potion d'Amour",       category: "Spécial", stats: { hp: 50, mp: 50 },   price: 350, image: "ressources/potion-love.png" }, //transforme un ennemi en allié
-  { id: 36, name: "Potion Étoile",        category: "Spécial", stats: { hp: 999, mp: 999, atk: 15, def: 15, agi: 15 }, price: 400, image: "ressources/potion-star.png" }, // Annule les dégat de la prochaine attaque subit
+  { id: 35, name: "Potion d'Amour",       category: "Spécial", stats: { hp: 50, mp: 50 },   price: 350, image: "ressources/potion-love.png" },
+  { id: 36, name: "Potion Étoile",        category: "Spécial", stats: { hp: 999, mp: 999, atk: 15, def: 15, agi: 15 }, price: 400, image: "ressources/potion-star.png" },
   { id: 37, name: "Bandage",              category: "Soin",    stats: { hp: 30 },           price: 35,  image: "ressources/bandage.png" },
-  { id: 50, name: "Queue de Phénix",      category: "Spécial",    stats: { hp: 2000 },           price: 500,  image: "ressources/QueuePhénix.png" }, //Récussite un allié KO
+  { id: 50, name: "Queue de Phénix",      category: "Spécial", stats: { hp: 2000 },         price: 500, image: "ressources/QueuePhénix.png" },
 ];
 
-// =========================
-// RECETTES
-// =========================
 const RECIPES = [
   { ingredients: ["Orange", "Orange"],                                  result: "Jus d'Orange" },
   { ingredients: ["Salade", "Tomate"],                                  result: "Salade de Tomate" },
@@ -73,18 +70,16 @@ const RECIPES = [
   { ingredients: ["Blé", "Carotte", "Tomate", "Viande Cuite"],         result: "Couscous" },
 ];
 
-// Éléments du DOM
-const btnSort     = document.getElementById("btn-sort");
-const searchInput = document.getElementById("search");
-const form        = document.getElementById("form-add");
+const btnSort        = document.getElementById("btn-sort");
+const searchInput    = document.getElementById("search");
+const filterCategory = document.getElementById("filter-category");
+const form           = document.getElementById("form-add");
 
-// Sens du tri
 let sortAsc = false;
+let editId  = null;
 
-// Valeurs max pour les barres
-const STAT_MAX = { hp: 999, mp: 999, atk: 50, def: 20, agi: 30 };
+const STAT_MAX = { hp: 2000, mp: 999, atk: 50, def: 20, agi: 30 };
 
-// Emoji par catégorie
 function getIcone(category) {
   const icones = {
     "Soin":    "💚",
@@ -99,7 +94,6 @@ function getIcone(category) {
   return icones[category] || "•";
 }
 
-// Icône par stat
 function getStatIcone(stat) {
   const icones = {
     hp:  "❤️",
@@ -111,7 +105,7 @@ function getStatIcone(stat) {
   return icones[stat] || stat;
 }
 
-// Génère les barres de stats
+// Calcule le pourcentage par rapport au max pour la barre
 function afficherStats(stats) {
   return Object.entries(stats).map(function([stat, valeur]) {
     const max = STAT_MAX[stat] || 100;
@@ -127,12 +121,17 @@ function afficherStats(stats) {
   }).join("");
 }
 
-// Rafraîchit l'affichage
+// Filtre par recherche + catégorie, puis trie par prix
 function refresh() {
-  const query = searchInput ? searchInput.value.toLowerCase() : "";
-  let result = query
-      ? data.filter(item => item.name.toLowerCase().includes(query))
-      : [...data];
+  const query    = searchInput ? searchInput.value.toLowerCase() : "";
+  const category = filterCategory ? filterCategory.value : "all";
+
+  let result = data.filter(function(item) {
+    const matchSearch   = !query || item.name.toLowerCase().includes(query);
+    const matchCategory = category === "all" || item.category === category;
+    return matchSearch && matchCategory;
+  });
+
   result.sort((a, b) => sortAsc ? a.price - b.price : b.price - a.price);
   afficherConsommables(result);
 }
@@ -151,10 +150,14 @@ if (btnSort) {
 }
 
 // =========================
-// RECHERCHE
+// RECHERCHE + FILTRE
 // =========================
 if (searchInput) {
   searchInput.addEventListener("input", refresh);
+}
+
+if (filterCategory) {
+  filterCategory.addEventListener("change", refresh);
 }
 
 // =========================
@@ -206,7 +209,7 @@ function lireImage(file) {
 }
 
 // =========================
-// AJOUT D'UN PLAT
+// AJOUT / MODIFICATION
 // =========================
 if (form) {
   form.addEventListener("submit", function(event) {
@@ -225,43 +228,73 @@ if (form) {
     if (agi > 0) stats.agi = agi;
     if (mp  > 0) stats.mp  = mp;
 
-    const nouveauItem = {
-      id: Date.now(),
-      name: document.getElementById("input-name").value.trim(),
+    const itemData = {
+      name:     document.getElementById("input-name").value.trim(),
       category: document.getElementById("input-category").value,
-      stats: Object.keys(stats).length > 0 ? stats : { hp: 0 },
-      price: Number(document.getElementById("input-price").value),
-      image: imageBase64 || "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(document.getElementById("input-name").value.trim())
+      stats:    Object.keys(stats).length > 0 ? stats : { hp: 0 },
+      price:    Number(document.getElementById("input-price").value),
+      image:    imageBase64 || "https://placehold.co/400x300/7f8c8d/white?text=" + encodeURIComponent(document.getElementById("input-name").value.trim())
     };
 
-    data.push(nouveauItem);
+    if (editId !== null) {
+      // Mode édition — remplace l'item existant sans changer l'id
+      const index = data.findIndex(i => i.id === editId);
+      if (index !== -1) data[index] = { ...itemData, id: editId };
+      editId = null;
+      document.querySelector("button[type='submit']").textContent = "Ajouter à la boutique";
+    } else {
+      data.push({ ...itemData, id: Date.now() });
+    }
+
     refresh();
     form.reset();
 
-    // Reset image
     imageBase64 = "";
     previewImg.classList.add("hidden");
     dropText.classList.remove("hidden");
 
-    // Retourner sur la boutique
     document.querySelector('[data-tab="shop"]').click();
   });
 }
 
 // =========================
-// SUPPRESSION
+// SUPPRESSION + ÉDITION
 // =========================
 const listElement = document.getElementById("list");
 if (listElement) {
-  listElement.addEventListener("click", function (event) {
-    const btn = event.target.closest(".btn-delete");
-    if (!btn) return;
-    const card = btn.closest(".card");
-    if (!card) return;
-    const id = Number(card.dataset.id);
-    if (!confirm("Supprimer cet ingrédient ?")) return;
-    data = data.filter(item => item.id !== id);
-    refresh();
+  listElement.addEventListener("click", function(event) {
+
+    // Suppression
+    const deleteBtn = event.target.closest(".btn-delete");
+    if (deleteBtn) {
+      const id = Number(deleteBtn.dataset.id);
+      if (!confirm("Supprimer cet ingrédient ?")) return;
+      const index = data.findIndex(item => item.id === id);
+      if (index !== -1) data.splice(index, 1);
+      refresh();
+      return;
+    }
+
+    // Édition — pré-remplit le formulaire avec les données de l'item
+    const editBtn = event.target.closest(".btn-edit");
+    if (editBtn) {
+      const id   = Number(editBtn.dataset.id);
+      const item = data.find(i => i.id === id);
+      if (!item) return;
+
+      document.getElementById("input-name").value     = item.name;
+      document.getElementById("input-category").value = item.category;
+      document.getElementById("input-price").value    = item.price;
+      document.getElementById("input-hp").value       = item.stats.hp  || 0;
+      document.getElementById("input-atk").value      = item.stats.atk || 0;
+      document.getElementById("input-def").value      = item.stats.def || 0;
+      document.getElementById("input-agi").value      = item.stats.agi || 0;
+      document.getElementById("input-mp").value       = item.stats.mp  || 0;
+
+      editId = id;
+      document.querySelector("button[type='submit']").textContent = "Modifier";
+      document.querySelector('[data-tab="craft"]').click();
+    }
   });
 }
 
@@ -283,13 +316,15 @@ function afficherConsommables(tabItems) {
         <div class="card-stats">${afficherStats(item.stats)}</div>
         <div class="card-footer">
           <span class="price"><img src="ressources/Coin.png" class="stat-icon"> ${item.price}</span>
-          <button class="btn-delete" data-id="${item.id}">🗑️</button>
+          <div style="display:flex;gap:0.3rem">
+            <button class="btn-edit" data-id="${item.id}">✏️</button>
+            <button class="btn-delete" data-id="${item.id}">🗑️</button>
+          </div>
         </div>
       </div>
     </article>`;
   });
 
-  // Carte vide
   html += `
   <article class="card card-add" id="card-add">
     <div class="card-add-inner">
@@ -312,12 +347,12 @@ function afficherRecettes() {
   RECIPES.forEach(function(recipe) {
     const ingredientsHtml = recipe.ingredients.map(function(nom) {
       const item = data.find(d => d.name === nom);
-      const img = item ? `<img src="${item.image}" alt="${nom}">` : "❓";
+      const img  = item ? `<img src="${item.image}" alt="${nom}">` : "❓";
       return `<div class="recipe-ing">${img}<span>${nom}</span></div>`;
     }).join('<span class="recipe-plus">+</span>');
 
     const resultItem = data.find(d => d.name === recipe.result);
-    const resultImg = resultItem ? `<img src="${resultItem.image}" alt="${recipe.result}">` : "❓";
+    const resultImg  = resultItem ? `<img src="${resultItem.image}" alt="${recipe.result}">` : "❓";
 
     html += `
     <div class="recipe-card">
